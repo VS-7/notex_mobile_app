@@ -1,5 +1,5 @@
 # NoteX - Aplicativo de Notas
-
+![Logo do NoteX](assets/icon.png)
 ## Sobre o NoteX
 
 NoteX é um aplicativo de notas simples e elegante desenvolvido usando o framework Flet para Python. Ele oferece as seguintes funcionalidades:
