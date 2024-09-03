@@ -57,7 +57,3 @@ O projeto é composto por vários arquivos:
 ## Contribuindo
 
 Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar pull requests ou abrir issues para melhorias ou correções de bugs.
-
-## Licença
-
-[Insira informações sobre a licença aqui]
