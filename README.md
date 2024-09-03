@@ -37,7 +37,7 @@ Para instalar e executar o NoteX, siga estas etapas:
    flet run main.py
    ```
 
-O aplicativo será iniciado e você poderá acessá-lo através do seu navegador padrão.
+O aplicativo será iniciado e você poderá visualiza-lo, caso todas as depêndencias tenham sido instaladas.
 
 ## Requisitos
 
