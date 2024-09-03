@@ -54,6 +54,16 @@ O projeto é composto por vários arquivos:
 - `pages/notes_view.py`: Implementação da página de visualização de notas.
 - `pages/note_detail_view.py`: Implementação da página de detalhes da nota.
 
+## Buildando o aplicativo em varias plataformas
+
+O projeto pode ser buildado nas plataformas Android, iOS, Windows, Linux e MacOS
+
+Para transformar seu aplicativo em um executável nas plataformas você deve digitar no seu terminal os seguintes comandos
+   ```
+   flet build [Plataforma] --module-name main.py --project "NoteX" --product "NoteX"
+   ```
+Onde Plataforma você deve adicionar a plataforma desejada, por exemplo, para buildar no android você vai utilizar o comando apk
+
 ## Contribuindo
 
 Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar pull requests ou abrir issues para melhorias ou correções de bugs.
