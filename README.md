@@ -28,7 +28,7 @@ Para instalar e executar o NoteX, siga estas etapas:
 
 3. Clone o repositório do NoteX :
    ```
-   git clone https://github.com/seu-usuario/notex.git
+   git clone https://github.com/VS-7/notex_mobile_app.git
    cd notex
    ```
 
