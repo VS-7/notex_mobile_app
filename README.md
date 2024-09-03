@@ -26,7 +26,7 @@ Para instalar e executar o NoteX, siga estas etapas:
    pip install flet
    ```
 
-3. Clone o repositório do NoteX (assumindo que está em um repositório Git):
+3. Clone o repositório do NoteX :
    ```
    git clone https://github.com/seu-usuario/notex.git
    cd notex
