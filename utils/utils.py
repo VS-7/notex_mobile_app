@@ -5,6 +5,11 @@ def show_error(page, message):
     page.snack_bar.open = True
     page.update()
 
+def go_back(page: ft.Page):
+    if len(page.views) > 1:
+        page.views.pop()
+        page.update()
+
 def apply_shadow(e):
     if e.control.shadow:
         e.control.shadow = None

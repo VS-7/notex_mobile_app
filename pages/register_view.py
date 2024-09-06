@@ -1,31 +1,51 @@
 import flet as ft
 from services.api_client import APIClient
 from utils.utils import show_error
+from components.back_button import BackButton
+from components.primary_input import PrimaryInput
+from components.primary_button import PrimaryButton
 
 class RegisterView(ft.View):
-    def __init__(self, page: ft.Page, show_login, register_success):
+    def __init__(self, page: ft.Page, show_initial, show_login, register_success):
         super().__init__()
         self.page = page
         self.show_login = show_login
+        self.show_initial = show_initial
         self.register_success = register_success
-        self.api_client = APIClient()
+        self.api_client = APIClient()       
 
-        self.name_input = ft.TextField(label="Nome", width=300)
-        self.email_input = ft.TextField(label="E-mail", width=300)
-        self.password_input = ft.TextField(label="Senha", password=True, can_reveal_password=True, width=300)
-        self.confirm_password_input = ft.TextField(label="Confirmar Senha", password=True, can_reveal_password=True, width=300)
+        self.name_input = PrimaryInput(label="Insira seu nome")
+        self.email_input = PrimaryInput(label="Insira seu e-mail")
+        self.password_input = PrimaryInput(label="Insira sua senha", password=True, can_reveal_password=True)
+        self.confirm_password_input = PrimaryInput(label="Confirme sua senha", password=True, can_reveal_password=True)
 
         self.controls = [
             ft.Container(
+                padding=ft.padding.all(20),
                 content=ft.Column(
-                    [
-                        ft.Text("Cadastro", size=24, weight=ft.FontWeight.BOLD),
+                    [   
+                        ft.Row(
+                            controls=[
+                                BackButton(on_click=lambda _: self.show_initial()),
+                            ]
+                        ),
+                        ft.Container(expand=True),
+                        ft.Text("Cadastre-se", size=40, weight=ft.FontWeight.BOLD),
+                        ft.Row(
+                                alignment=ft.MainAxisAlignment.CENTER,
+                                controls=[
+                                    ft.Text("Se Precisar De Algum Suporte", weight=ft.FontWeight.W_400),
+                                    ft.TextButton("Clique Aqui", on_click=lambda _: self.show_register()),
+                                ]
+                            ),
                         self.name_input,
                         self.email_input,
                         self.password_input,
                         self.confirm_password_input,
-                        ft.ElevatedButton("Cadastrar", on_click=self.register, width=300),
+                        ft.Container(expand=True),
+                        PrimaryButton("Cadastrar", on_click=self.register),
                         ft.TextButton("Já tem uma conta? Faça login", on_click=lambda _: self.show_login()),
+                        ft.Container(expand=True),
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,

@@ -1,30 +1,49 @@
 import flet as ft
 from services.api_client import APIClient
 from utils.utils import show_error
-import json
+from components.back_button import BackButton
+from components.primary_input import PrimaryInput
+from components.primary_button import PrimaryButton
 
 class LoginView(ft.View):
-    def __init__(self, page: ft.Page, show_register, login_success):
+    def __init__(self, page: ft.Page, show_initial, show_register, login_success):
         super().__init__()
         self.page = page
-        self.show_register = show_register
+        self.show_register = show_register 
+        self.show_initial = show_initial
         self.login_success = login_success
         self.api_client = APIClient()
 
-        self.email_input = ft.TextField(label="E-mail", width=300)
-        self.password_input = ft.TextField(label="Senha", password=True, can_reveal_password=True, width=300)
+        self.email_input = PrimaryInput(label="Insira seu e-mail")
+        self.password_input = PrimaryInput(label="Insira sua senha", password=True, can_reveal_password=True)
 
         self.controls = [
             ft.Container(
+                padding=ft.padding.all(20),
                 content=ft.Container(
-                    width=300,
                     content=ft.Column(
                         [
-                            ft.Text("Login", size=24, weight=ft.FontWeight.BOLD),
+                            ft.Row(
+                                controls=[
+                                    BackButton(on_click=lambda _: self.show_initial()),
+                                ]
+                            ),
+                            ft.Container(expand=True),
+                            ft.Text("Entrar", size=40, weight=ft.FontWeight.BOLD),
+                            
+                            ft.Row(
+                                alignment=ft.MainAxisAlignment.CENTER,
+                                controls=[
+                                    ft.Text("Se Precisar De Algum Suporte", weight=ft.FontWeight.W_400),
+                                    ft.TextButton("Clique Aqui", on_click=lambda _: self.show_register()),
+                                ]
+                            ),
                             self.email_input,
                             self.password_input,
-                            ft.ElevatedButton("Entrar", on_click=self.login, width=300),
-                            ft.TextButton("Não tem uma conta? Cadastre-se", on_click=lambda _: self.show_register()),
+                             ft.Container(expand=True),
+                            PrimaryButton("Entrar", on_click=self.login),
+                            ft.TextButton("Não Possui Uma Conta? Cadastre-se", on_click=lambda _: self.show_register()),
+                            ft.Container(expand=True),
                         ],
                         alignment=ft.MainAxisAlignment.CENTER,
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
